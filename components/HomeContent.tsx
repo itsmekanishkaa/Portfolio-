@@ -1,0 +1,153 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+
+export default function HomeContent() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 1800);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <div className={`page-transition transition-all duration-700 ${
+      isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+    }`}>
+      {/* Hero Section - Modern Minimal */}
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-grid-pattern opacity-5" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div className="space-y-8 animate-fade-in">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+                Nourishing
+                <br />
+                <span className="text-primary">the Body,</span>
+                <br />
+                Empowering
+                <br />
+                <span className="text-primary">the Soul</span>
+              </h1>
+
+              <p className="text-lg text-muted-foreground max-w-xl leading-relaxed">
+                Certified dietician and nutritionist helping you discover the healing power of food through
+                personalized nutrition plans and holistic wellness.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-primary text-primary-foreground font-medium hover:shadow-xl hover:-translate-y-1 transition-all duration-200"
+                >
+                  Book Consultation
+                  <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+                <Link
+                  href="/about"
+                  className="inline-flex items-center justify-center px-8 py-4 rounded-lg border border-[rgb(var(--border))] font-medium hover:bg-muted transition-colors"
+                >
+                  Learn More
+                </Link>
+              </div>
+            </div>
+
+            {/* Right Image */}
+            <div className="relative lg:h-[600px] animate-fade-in delay-200">
+              <div className="relative h-full rounded-2xl overflow-hidden">
+                <Image
+                  src="/images/hero-wellness.jpg"
+                  alt="Healthy nutrition"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Preview */}
+      <section className="py-24 bg-muted/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">What I Offer</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Comprehensive nutrition services tailored to your unique needs
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: 'Personalized Plans',
+                description: 'Custom nutrition strategies designed for your goals',
+                icon: '📋',
+              },
+              {
+                title: 'Weight Management',
+                description: 'Sustainable approaches to healthy weight',
+                icon: '⚖️',
+              },
+              {
+                title: 'Holistic Wellness',
+                description: 'Complete mind-body-spirit integration',
+                icon: '🌱',
+              },
+            ].map((service, index) => (
+              <div
+                key={index}
+                className="card p-8 hover:shadow-lg transition-all duration-300"
+              >
+                <div className="text-4xl mb-4">{service.icon}</div>
+                <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+                <p className="text-muted-foreground">{service.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              href="/services"
+              className="inline-flex items-center text-primary font-medium hover:underline"
+            >
+              View All Services
+              <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Health?</h2>
+          <p className="text-lg text-muted-foreground mb-8">
+            Start your journey towards balanced nutrition and holistic wellness today
+          </p>
+          <Link
+            href="/contact"
+            className="inline-flex items-center px-8 py-4 rounded-lg bg-primary text-primary-foreground font-medium hover:shadow-xl hover:-translate-y-1 transition-all duration-200"
+          >
+            Get Started
+            <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
+}
