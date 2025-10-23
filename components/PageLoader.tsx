@@ -8,6 +8,9 @@ export default function PageLoader() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    // Remove loading class to make body visible
+    document.documentElement.classList.remove('loading');
+
     // Smooth progress animation
     const progressInterval = setInterval(() => {
       setProgress((prev) => {

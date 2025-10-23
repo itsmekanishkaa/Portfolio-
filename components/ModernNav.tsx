@@ -29,20 +29,20 @@ export default function ModernNav() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-background/80 backdrop-blur-lg border-b border-[rgb(var(--border))]'
-          : 'bg-transparent'
+        isScrolled || isMobileMenuOpen
+          ? 'bg-background/95 backdrop-blur-lg border-b border-[rgb(var(--border))] shadow-sm'
+          : 'bg-background/80 backdrop-blur-md'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-14 sm:h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 group">
             <div className="relative">
-              <span className="text-2xl font-bold text-foreground tracking-tight">
+              <span className="text-lg sm:text-xl md:text-2xl font-bold text-foreground tracking-tight">
                 Kanishka
               </span>
-              <span className="text-xs block text-muted-foreground">Dietician & Nutritionist</span>
+              <span className="text-[10px] sm:text-xs block text-muted-foreground">Dietician & Nutritionist</span>
             </div>
           </Link>
 

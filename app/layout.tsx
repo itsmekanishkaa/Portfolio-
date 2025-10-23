@@ -6,6 +6,7 @@ import ModernNav from "@/components/ModernNav";
 import ModernFooter from "@/components/ModernFooter";
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import StructuredData from '@/components/StructuredData';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -15,28 +16,33 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Kanishka Thapliyal - Nutrition & Wellness",
-    template: "%s | Kanishka"
+    default: "Kanishka Thapliyal - Certified Dietician & Nutritionist | Transform Your Health",
+    template: "%s | Kanishka Thapliyal"
   },
-  description: "Expert dietician and nutritionist with B.Sc. in Home Science (Nutrition & Dietetics). Personalized nutrition plans, weight management, PCOS/thyroid support, pregnancy nutrition, and holistic wellness guidance.",
+  description: "Transform your health with Kanishka Thapliyal, certified dietician & nutritionist with B.Sc. in Home Science. Expert in personalized nutrition, weight management, PCOS, thyroid, pregnancy nutrition & holistic wellness. Book consultation now!",
   keywords: [
-    "dietician",
-    "nutritionist",
-    "Kanishka Thapliyal",
+    "dietician near me",
+    "nutritionist online",
+    "Kanishka Thapliyal dietician",
+    "certified nutritionist",
     "personalized diet plans",
-    "weight management",
-    "pregnancy nutrition",
-    "lactation nutrition",
-    "holistic wellness",
-    "mindful eating",
-    "nutrition counseling",
-    "B.Sc Home Science",
-    "PCOS nutrition",
-    "thyroid diet",
-    "meal planning",
-    "nutrition consultant",
+    "weight management program",
+    "pregnancy nutrition specialist",
+    "lactation nutrition consultant",
+    "holistic wellness coach",
+    "mindful eating counseling",
+    "nutrition counseling online",
+    "B.Sc Home Science nutritionist",
+    "PCOS nutrition expert",
+    "thyroid diet specialist",
+    "meal planning service",
+    "nutrition consultant India",
+    "virtual dietician consultation",
+    "women's health nutrition",
+    "hormonal balance diet",
+    "evidence-based nutrition",
   ],
-  authors: [{ name: "Kanishka Thapliyal" }],
+  authors: [{ name: "Kanishka Thapliyal", url: "https://linktr.ee/itsmekanishka" }],
   creator: "Kanishka Thapliyal",
   publisher: "Kanishka Thapliyal",
   metadataBase: new URL('https://kanishkathapliyal.com'),
@@ -45,30 +51,41 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Kanishka Thapliyal | Certified Dietician & Nutritionist",
-    description: "Nourishing the Body, Empowering the Soul. Expert nutrition services for optimal health and wellness.",
+    description: "Nourishing the Body, Empowering the Soul. Expert nutrition services for optimal health and wellness. Book your personalized consultation today!",
+    url: "https://kanishkathapliyal.com",
     type: "website",
     locale: "en_US",
-    siteName: "Kanishka Thapliyal Nutrition",
+    siteName: "Kanishka Thapliyal Nutrition & Wellness",
+    images: [
+      {
+        url: '/images/hero-wellness.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Kanishka Thapliyal - Certified Dietician & Nutritionist',
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Kanishka Thapliyal | Certified Dietician & Nutritionist",
-    description: "Expert nutrition services for optimal health and wellness.",
+    description: "Transform your health with expert nutrition services. Personalized diet plans, weight management & holistic wellness.",
+    images: ['/images/hero-wellness.jpg'],
   },
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
+      noimageindex: false,
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
   },
-  verification: {
-    google: 'your-google-verification-code',
-  },
+  category: 'Health & Wellness',
+  classification: 'Nutrition & Dietetics',
 };
 
 export default function RootLayout({
@@ -87,6 +104,8 @@ export default function RootLayout({
             window.addEventListener('beforeunload', () => {
               window.scrollTo(0, 0);
             });
+            // Prevent content flash - hide body initially
+            document.documentElement.classList.add('loading');
           `
         }} />
       </head>
@@ -97,8 +116,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <StructuredData />
           <ModernNav />
-          <main className="flex-1 pt-16">{children}</main>
+          <main className="flex-1 pt-14 sm:pt-16">{children}</main>
           <ModernFooter />
           <Analytics />
           <SpeedInsights />

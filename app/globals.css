@@ -176,6 +176,10 @@ html {
 }
 
 /* Prevent content flash on initial load */
+html.loading body {
+  visibility: hidden;
+}
+
 .initial-hidden {
   opacity: 0;
   visibility: hidden;

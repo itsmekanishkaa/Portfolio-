@@ -30,14 +30,14 @@ export default function HomeContent() {
       isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
     }`} style={{ willChange: 'opacity, transform' }}>
       {/* Hero Section - Modern Minimal */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen sm:min-h-[90vh] flex items-center justify-center overflow-hidden pt-20 sm:pt-0">
         <div className="absolute inset-0 bg-grid-pattern opacity-5" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left Content */}
-            <div className="space-y-8 animate-fade-in">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+            <div className="space-y-6 sm:space-y-8 animate-fade-in text-center lg:text-left">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
                 Nourishing
                 <br />
                 <span className="text-primary">the Body,</span>
@@ -47,15 +47,15 @@ export default function HomeContent() {
                 <span className="text-primary">the Soul</span>
               </h1>
 
-              <p className="text-lg text-muted-foreground max-w-xl leading-relaxed">
+              <p className="text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed mx-auto lg:mx-0">
                 Certified dietician and nutritionist helping you discover the healing power of food through
                 personalized nutrition plans and holistic wellness.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-primary text-primary-foreground font-medium hover:shadow-xl hover:-translate-y-1 transition-all duration-200"
+                  className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 rounded-lg bg-primary text-primary-foreground font-medium hover:shadow-xl hover:-translate-y-1 transition-all duration-200 text-sm sm:text-base"
                 >
                   Book Consultation
                   <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -64,7 +64,7 @@ export default function HomeContent() {
                 </Link>
                 <Link
                   href="/about"
-                  className="inline-flex items-center justify-center px-8 py-4 rounded-lg border border-[rgb(var(--border))] font-medium hover:bg-muted transition-colors"
+                  className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 rounded-lg border border-[rgb(var(--border))] font-medium hover:bg-muted transition-colors text-sm sm:text-base"
                 >
                   Learn More
                 </Link>
@@ -72,14 +72,15 @@ export default function HomeContent() {
             </div>
 
             {/* Right Image */}
-            <div className="relative lg:h-[600px] animate-fade-in delay-200">
-              <div className="relative h-full rounded-2xl overflow-hidden">
+            <div className="relative h-[300px] sm:h-[400px] lg:h-[500px] xl:h-[600px] animate-fade-in delay-200 order-first lg:order-last">
+              <div className="relative h-full rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src="/images/hero-wellness.jpg"
                   alt="Healthy nutrition"
                   fill
                   className="object-cover"
                   priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                 />
               </div>
             </div>
