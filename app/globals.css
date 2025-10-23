@@ -175,6 +175,12 @@ html {
   animation: fadeIn 0.4s ease-in-out;
 }
 
+/* Prevent content flash on initial load */
+.initial-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
 /* Responsive Optimizations */
 @media (max-width: 640px) {
   h1 {

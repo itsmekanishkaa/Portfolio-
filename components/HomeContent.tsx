@@ -6,19 +6,29 @@ import Image from 'next/image';
 
 export default function HomeContent() {
   const [isVisible, setIsVisible] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    // Immediately hide content on mount
+    setIsMounted(true);
+
+    // Show content after loader completes
     const timer = setTimeout(() => {
       setIsVisible(true);
-    }, 1800);
+    }, 1900);
 
     return () => clearTimeout(timer);
   }, []);
 
+  // Don't render anything until mounted (prevents SSR flash)
+  if (!isMounted) {
+    return <div style={{ visibility: 'hidden' }} />;
+  }
+
   return (
-    <div className={`page-transition transition-all duration-700 ${
-      isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-    }`}>
+    <div className={`transition-all duration-1000 ease-out ${
+      isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
+    }`} style={{ willChange: 'opacity, transform' }}>
       {/* Hero Section - Modern Minimal */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-5" />
