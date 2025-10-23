@@ -41,7 +41,7 @@ export default function PageLoader() {
   return (
     <div className={`fixed inset-0 z-[9999] flex items-center justify-center bg-gradient-to-br from-background via-background to-primary/5 transition-all duration-700 ${
       isFadingOut ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
-    }`}
+    }`}>
       <div className="relative">
         {/* Animated Circle with Leaf Pattern */}
         <div className="relative w-32 h-32">
