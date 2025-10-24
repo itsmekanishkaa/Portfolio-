@@ -11,26 +11,26 @@ export default function PageLoader() {
     // Remove loading class to make body visible
     document.documentElement.classList.remove('loading');
 
-    // Smooth progress animation
+    // Faster progress animation
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(progressInterval);
           return 100;
         }
-        return prev + 2;
+        return prev + 3; // Faster increment
       });
-    }, 20);
+    }, 15); // Faster interval
 
-    // Start fade out
+    // Start fade out earlier
     const fadeTimer = setTimeout(() => {
       setIsFadingOut(true);
-    }, 1200);
+    }, 900);
 
     // Remove loader completely
     const removeTimer = setTimeout(() => {
       setIsLoading(false);
-    }, 1800);
+    }, 1400);
 
     return () => {
       clearInterval(progressInterval);

@@ -12,10 +12,10 @@ export default function HomeContent() {
     // Immediately hide content on mount
     setIsMounted(true);
 
-    // Show content after loader completes
+    // Show content after loader completes (faster)
     const timer = setTimeout(() => {
       setIsVisible(true);
-    }, 1900);
+    }, 1500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -76,11 +76,14 @@ export default function HomeContent() {
               <div className="relative h-full rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src="/images/hero-wellness.jpg"
-                  alt="Healthy nutrition"
+                  alt="Certified dietician Kanishka Thapliyal providing personalized nutrition counseling"
                   fill
                   className="object-cover"
                   priority
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                  quality={85}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwABmQ/9k="
                 />
               </div>
             </div>

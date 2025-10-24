@@ -12,6 +12,9 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
+  preload: true,
+  fallback: ['system-ui', '-apple-system', 'sans-serif'],
+  adjustFontFallback: true,
 });
 
 export const metadata: Metadata = {
@@ -96,6 +99,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <head>
+        {/* Performance optimizations - preconnect to external domains */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://vercel.live" />
+        <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
+
         <script dangerouslySetInnerHTML={{
           __html: `
             if ('scrollRestoration' in history) {
